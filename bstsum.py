@@ -1,3 +1,11 @@
+def subtreesum(Root):
+    if Root==None:
+        return 0
+    if Root.left!=None:
+        Root.sum+=Root.val+subtreesum(Root.left.sum)
+    if Root.right!=None:
+        Root.sum+=subtree(Root.right.sum)
+    return Root.sum
 class Node:
     def __init__(self,val):
         self.val = val
@@ -19,7 +27,7 @@ def inorder(root):
     
     if root!=None:
         inorder(root.left)
-        print root.val,
+        print root.val,root.sum
         inorder(root.right)
 def preorder(root):
     
@@ -38,7 +46,8 @@ def build_bst(l):
     Root=Node(l[0])
     for i in range(1,len(l)):
         insert(Root,Node(l[i]))
-    print "Inorder Traversal"
-    inorder(Root)
     return Root
-Root=build_bst([2,4,1,5,7,9,0,-1,6,10])
+Root=build_bst([3,2,5,1,7])
+subtreesum(Root)
+print "Inorder Traversal"
+inorder(Root)
