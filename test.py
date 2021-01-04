@@ -1,11 +1,16 @@
-k=6
-for z in range(1,64):
-    i=12
-    for j in range(1,64):
-        if (k^i^j)>=min(i,j):
-            print k^i^j,i,j
-            print bin(k)[2:]
-            print bin(i)[2:]
-            print bin(i)[2:]
-        
-        
+def solve(s,i):
+    ans=0
+    if i==0:
+        ans= 1
+    elif i==1:
+        if int(s[0]+s[1])>26:
+            ans= 1
+        else:
+            ans= 2
+    else:
+        if int(s[i-1]+s[i])>26:
+            ans= solve(s,i-1)
+        else:
+            ans= solve(s,i-1)+1
+    return ans
+print solve("226",2)
