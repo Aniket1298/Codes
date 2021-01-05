@@ -9,4 +9,3 @@ for _ in range(input()):
             print "NO"
         else:
             print "YES"
-        
