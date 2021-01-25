@@ -1,16 +1,16 @@
-def solve(s,i):
-    ans=0
-    if i==0:
-        ans= 1
-    elif i==1:
-        if int(s[0]+s[1])>26:
-            ans= 1
-        else:
-            ans= 2
-    else:
-        if int(s[i-1]+s[i])>26:
-            ans= solve(s,i-1)
-        else:
-            ans= solve(s,i-1)+1
-    return ans
-print solve("226",2)
+n=int(input())
+s=input()+'.'
+l=[]
+last=-1
+for i in range(len(s)-1):
+    if s[i]!=s[i+1]:
+        l.append([s[i],str(i-last)])
+        last=i
+s=''
+print (1)
+for i in l:
+    s+="\""+i[0]+"\""+"*"+i[1]+"+"
+s=s[0:len(s)-1]
+print ("print("+s+")")
+#print("all"*2)
+    

@@ -1,13 +1,21 @@
-
 n,k=map(int,raw_input().split())
 l=map(int,raw_input().split())
-dp=[]
-for i in range(251):
-    dp.append([0]*255)
-for i in range(k):
-    for j in range(n+1):
-        if j==0:
-            dp[i][j]=1
-        else:
-            dp[i][j]=dp[i][j-l[i]]+dp[i-1][j]
-print dp[k-1][n]
+dp=[1e7]*(k+1)
+for i in l:
+    if i<len(dp):
+        dp[i]=1
+i=0
+
+while i<n:
+    money=0
+    while money<=k:
+        if l[i]<=money:
+            #print money,l[i],money-l[i],dp[money-l[i]],dp[money]
+            dp[money]=min(dp[money-l[i]]+1,dp[money])
+        money+=1
+    i+=1
+#print dp
+if dp[k]!=1e7:
+    print dp[k]
+else:
+    print -1

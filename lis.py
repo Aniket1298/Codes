@@ -26,3 +26,5 @@ def lis(l):
         if d[i]!=inf:
             ans=i
     return  ans
+n=input()
+print lis(map(int,raw_input().split()))
