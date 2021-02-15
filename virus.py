@@ -1,0 +1,1 @@
+print([[] for i n range(10)])

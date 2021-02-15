@@ -25,4 +25,9 @@ def si():
 def li():
 	return (map(int,si().split()) if (local and version<3) else list(map(int,si().split())))
 def ii():return (input() if version<3 else int(input()))
-
+for _ in xrange(ii()):
+        n,k=li()
+        if n>k:
+                print 1
+        else:
+                
