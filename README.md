@@ -40,3 +40,20 @@ if dp[k]!=1e7:
 else:
     print -1
 ```
+## Number of paths in a matrix
+```
+def find(i,j):
+    if i==x and j==y:
+        return
+    if i==0 and j==0:
+        return 1
+    if i<0 or j<0:
+        return 0
+    if dp[i][j]:
+        return dp[i][j]
+    dp[i][j]= find(i-1,j,x,y)+find(i,j-1,x,y)
+    return dp[i][j]
+n,m=3,3
+dp=[[0]*(m+1) for i in range(n+1)]
+print find(n,m)
+```
