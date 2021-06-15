@@ -57,3 +57,16 @@ n,m=3,3
 dp=[[0]*(m+1) for i in range(n+1)]
 print find(n,m)
 ```
+## Amazon fulfillment Center
+```
+import heapq
+def solve(l):
+    heapq.heapify(l)
+    ans=0
+    while len(l)>1:
+        a,b=heapq.heappop(l),heapq.heappop(l)
+        ans+=a+b
+        heapq.heappush(l,a+b)
+    return ans
+print solve([8,4,6,12])
+```
