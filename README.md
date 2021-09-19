@@ -70,3 +70,36 @@ def solve(l):
     return ans
 print solve([8,4,6,12])
 ```
+## Amazon Air route
+```
+def solve(F,B,T):
+    mx=0
+    ans=[]
+    F.sort(key=lambda x:x[1])
+    B.sort(key=lambda x:x[1])
+    for index,item in F:
+        start=0
+        end=len(B)-1
+        search=T-item
+        last=0
+        while start<=end:
+            mid=(start+end)/2
+            if B[mid][1]>search:
+                end=mid-1
+            elif B[mid][1]<search:
+                start=mid+1
+            else:
+                break
+        cur=item+B[mid][1]
+        if cur>mx and cur<=T:
+            ans=[[index,B[mid][0]]]
+            mx = cur
+        elif cur==mx:
+            ans.append([index,B[mid][0]])
+    if len(ans)==0:
+        return []
+    return ans
+
+print solve([(1,8),(2,15),(3,9)],
+	 [(1,8),(2,11),(3,12)], 20)
+```
